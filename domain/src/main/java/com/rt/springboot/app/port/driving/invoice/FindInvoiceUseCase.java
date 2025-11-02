@@ -3,6 +3,6 @@ package com.rt.springboot.app.port.driving.invoice;
 import com.rt.springboot.app.model.Invoice;
 
 public interface FindInvoiceUseCase {
-    Invoice findOne(Long id);
+    Invoice findById(Long id);
 }
 
