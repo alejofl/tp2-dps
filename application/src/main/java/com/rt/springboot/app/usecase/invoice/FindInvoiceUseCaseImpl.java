@@ -6,6 +6,8 @@ import com.rt.springboot.app.port.driving.invoice.FindInvoiceUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
 public class FindInvoiceUseCaseImpl implements FindInvoiceUseCase {
@@ -13,7 +15,7 @@ public class FindInvoiceUseCaseImpl implements FindInvoiceUseCase {
     private final InvoiceRepository invoiceRepository;
 
     @Override
-    public Invoice findById(Long id) {
+    public Invoice findById(UUID id) {
         return this.invoiceRepository.findById(id);
     }
 }

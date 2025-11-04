@@ -6,6 +6,8 @@ import com.rt.springboot.app.port.driving.product.FindProductUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
 public class FindProductUseCaseImpl implements FindProductUseCase {
@@ -13,7 +15,7 @@ public class FindProductUseCaseImpl implements FindProductUseCase {
     private final ProductRepository productRepository;
 
     @Override
-    public Product findById(Long id) {
+    public Product findById(UUID id) {
         return this.productRepository.findById(id);
     }
 }

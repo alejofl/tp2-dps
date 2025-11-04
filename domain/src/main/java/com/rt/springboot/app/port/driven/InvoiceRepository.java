@@ -2,9 +2,11 @@ package com.rt.springboot.app.port.driven;
 
 import com.rt.springboot.app.model.Invoice;
 
+import java.util.UUID;
+
 public interface InvoiceRepository {
 
-    Invoice findById(long id);
+    Invoice findById(UUID id);
 
-    void delete(long id);
+    void delete(UUID id);
 }
