@@ -1,20 +1,20 @@
 package com.rt.springboot.app.usecase.invoice;
 
-import com.rt.springboot.app.port.driven.InvoiceRepository;
+import com.rt.springboot.app.annotation.UseCase;
+import com.rt.springboot.app.port.driven.invoice.DeleteInvoicePort;
 import com.rt.springboot.app.port.driving.invoice.DeleteInvoiceUseCase;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
-@Service
+@UseCase
 @RequiredArgsConstructor
 public class DeleteInvoiceUseCaseImpl implements DeleteInvoiceUseCase {
 
-    private final InvoiceRepository invoiceRepository;
+    private final DeleteInvoicePort deleteInvoicePort;
 
     @Override
     public void delete(UUID id) {
-        this.invoiceRepository.delete(id);
+        this.deleteInvoicePort.delete(id);
     }
 }

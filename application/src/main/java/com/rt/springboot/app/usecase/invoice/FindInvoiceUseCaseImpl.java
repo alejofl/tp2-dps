@@ -1,21 +1,21 @@
 package com.rt.springboot.app.usecase.invoice;
 
+import com.rt.springboot.app.annotation.UseCase;
 import com.rt.springboot.app.model.Invoice;
-import com.rt.springboot.app.port.driven.InvoiceRepository;
+import com.rt.springboot.app.port.driven.invoice.FindInvoicePort;
 import com.rt.springboot.app.port.driving.invoice.FindInvoiceUseCase;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
-@Service
+@UseCase
 @RequiredArgsConstructor
 public class FindInvoiceUseCaseImpl implements FindInvoiceUseCase {
 
-    private final InvoiceRepository invoiceRepository;
+    private final FindInvoicePort findInvoicePort;
 
     @Override
     public Invoice findById(UUID id) {
-        return this.invoiceRepository.findById(id);
+        return this.findInvoicePort.findById(id);
     }
 }

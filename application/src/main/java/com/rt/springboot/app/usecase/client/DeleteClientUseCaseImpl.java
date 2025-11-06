@@ -1,20 +1,20 @@
 package com.rt.springboot.app.usecase.client;
 
-import com.rt.springboot.app.port.driven.ClientRepository;
+import com.rt.springboot.app.annotation.UseCase;
+import com.rt.springboot.app.port.driven.client.DeleteClientPort;
 import com.rt.springboot.app.port.driving.client.DeleteClientUseCase;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
-@Service
+@UseCase
 @RequiredArgsConstructor
 public class DeleteClientUseCaseImpl implements DeleteClientUseCase {
 
-    private final ClientRepository clientRepository;
+    private final DeleteClientPort deleteClientPort;
 
     @Override
     public void delete(UUID id) {
-        this.clientRepository.delete(id);
+        this.deleteClientPort.delete(id);
     }
 }

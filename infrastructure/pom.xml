@@ -13,5 +13,10 @@
             <version>${parent.version}</version>
             <artifactId>domain</artifactId>
         </dependency>
+        <dependency>
+            <groupId>${parent.groupId}</groupId>
+            <version>${parent.version}</version>
+            <artifactId>common</artifactId>
+        </dependency>
     </dependencies>
 </project>

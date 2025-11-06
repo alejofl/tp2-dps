@@ -1,0 +1,28 @@
+package com.rt.springboot.app.adapter.driven.product;
+
+import lombok.Data;
+
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.UUID;
+
+@Data
+@Table(name = "products")
+public class ProductRelationalEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column
+    private UUID uuid;
+
+    @Column
+    private String name;
+
+    @Column
+    private BigDecimal price;
+
+    @Column
+    private Date createdAt;
+}

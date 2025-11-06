@@ -1,21 +1,21 @@
 package com.rt.springboot.app.usecase.client;
 
+import com.rt.springboot.app.annotation.UseCase;
 import com.rt.springboot.app.model.Client;
-import com.rt.springboot.app.port.driven.ClientRepository;
+import com.rt.springboot.app.port.driven.client.FindAllClientsPort;
 import com.rt.springboot.app.port.driving.client.FindAllClientsUseCase;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@UseCase
 @RequiredArgsConstructor
 public class FindAllClientsUseCaseImpl implements FindAllClientsUseCase {
 
-    private final ClientRepository clientRepository;
+    private final FindAllClientsPort findAllClientsPort;
 
     @Override
     public List<Client> findAll() {
-        return this.clientRepository.findAll();
+        return this.findAllClientsPort.findAll();
     }
 }
