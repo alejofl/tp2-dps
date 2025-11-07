@@ -7,4 +7,11 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>domain</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>${parent.groupId}</groupId>
+            <version>${parent.version}</version>
+            <artifactId>common</artifactId>
+        </dependency>
+    </dependencies>
 </project>

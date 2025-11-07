@@ -21,6 +21,7 @@
 		<module>infrastructure</module>
 		<module>boot</module>
         <module>common</module>
+        <module>interface</module>
     </modules>
 
 	<properties>
