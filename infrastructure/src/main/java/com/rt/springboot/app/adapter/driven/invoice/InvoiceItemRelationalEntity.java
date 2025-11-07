@@ -6,6 +6,7 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Data
+@Entity
 @Table(name = "invoice_items")
 public class InvoiceItemRelationalEntity {
     @Id
@@ -15,7 +16,8 @@ public class InvoiceItemRelationalEntity {
     @Column
     private int amount;
 
-    @Column
+    @ManyToOne
+    @JoinColumn(name = "product_id", nullable = false)
     private ProductRelationalEntity product;
 
     @ManyToOne

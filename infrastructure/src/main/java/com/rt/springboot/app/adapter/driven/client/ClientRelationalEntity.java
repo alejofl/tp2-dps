@@ -7,6 +7,7 @@ import java.sql.Date;
 import java.util.UUID;
 
 @Data
+@Entity
 @Table(name = "clients")
 public class ClientRelationalEntity {
 

@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Data
+@Entity
 @Table(name = "invoices")
 public class InvoiceRelationalEntity {
 

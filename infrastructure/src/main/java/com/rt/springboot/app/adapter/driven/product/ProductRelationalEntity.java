@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.UUID;
 
 @Data
+@Entity
 @Table(name = "products")
 public class ProductRelationalEntity {
     @Id
