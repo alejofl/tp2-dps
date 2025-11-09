@@ -1,12 +1,9 @@
 package com.rt.springboot.app.adapter.driving;
 
 import com.rt.springboot.app.Pair;
-import com.rt.springboot.app.adapter.driving.dto.ClientDto;
 import com.rt.springboot.app.adapter.driving.dto.ClientMapper;
 import com.rt.springboot.app.adapter.driving.dto.CreateInvoiceDto;
 import com.rt.springboot.app.annotation.Adapter;
-import com.rt.springboot.app.model.Client;
-import com.rt.springboot.app.model.Invoice;
 import com.rt.springboot.app.port.driving.client.FindClientUseCase;
 import com.rt.springboot.app.port.driving.invoice.CreateInvoiceUseCase;
 import com.rt.springboot.app.port.driving.invoice.DeleteInvoiceUseCase;
@@ -25,10 +22,10 @@ import java.util.stream.IntStream;
 
 @Secured("ROLE_ADMIN")
 @Adapter
-@RequestMapping("/invoice")
 @RequiredArgsConstructor
+@RequestMapping("/invoice")
 @SessionAttributes("invoice")
-public class InvoiceDrivingAdapter {
+public class InvoiceMvcAdapter {
 
     private final DeleteInvoiceUseCase deleteInvoiceUseCase;
     private final FindInvoiceUseCase findInvoiceUseCase;
@@ -38,9 +35,14 @@ public class InvoiceDrivingAdapter {
     private final MessageSource messageSource;
 
     @GetMapping("/view/{id}")
-    public String view(@PathVariable(value = "id") UUID id, Model model, RedirectAttributes flash, Locale locale) {
-
-        Invoice invoice = findInvoiceUseCase.findById(id);
+    public String view(
+            @PathVariable(value = "id") UUID id,
+            Model model,
+            RedirectAttributes flash,
+            Locale locale
+    ) {
+        // TODO map this to a dto
+        final var invoice = findInvoiceUseCase.findById(id);
 
         if (invoice == null) {
             flash.addAttribute("error", messageSource.getMessage("text.factura.flash.db.error", null, locale));
@@ -54,32 +56,39 @@ public class InvoiceDrivingAdapter {
     }
 
     @GetMapping("/form/{clientId}")
-    public String create(@PathVariable(value = "clientId") UUID clientId, Map<String, Object> model,
-                         RedirectAttributes flash, Locale locale) {
-
-        Client client = findClientUseCase.findById(clientId);
+    public String create(
+            @PathVariable(value = "clientId") UUID clientId,
+            Model model,
+            RedirectAttributes flash,
+            Locale locale
+    ) {
+        final var client = findClientUseCase.findById(clientId);
 
         if (client == null) {
             flash.addAttribute("error", messageSource.getMessage("text.cliente.flash.db.error", null, locale));
             return "redirect:/list";
         }
 
-        ClientDto clientDto = ClientMapper.INSTANCE.toDto(client);
-        CreateInvoiceDto invoice = new CreateInvoiceDto();
+        final var clientDto = ClientMapper.INSTANCE.toDto(client);
+        final var invoice = new CreateInvoiceDto();
         invoice.setClient(clientDto);
 
-        model.put("invoice", invoice);
-        model.put("title", messageSource.getMessage("text.factura.form.titulo", null, locale));
+        model.addAttribute("invoice", invoice);
+        model.addAttribute("title", messageSource.getMessage("text.factura.form.titulo", null, locale));
 
         return "invoice/form";
     }
 
     @PostMapping("/form")
-    public String save(@Valid CreateInvoiceDto createInvoiceDto, BindingResult result, Model model,
-                       @RequestParam(name = "item_id[]", required = false) UUID[] itemId,
-                       @RequestParam(name = "amount[]", required = false) Integer[] amount, RedirectAttributes flash,
-                       Locale locale) {
-
+    public String save(
+            @RequestParam(name = "item_id[]", required = false) UUID[] itemId,
+            @RequestParam(name = "amount[]", required = false) Integer[] amount,
+            @Valid CreateInvoiceDto createInvoiceDto,
+            BindingResult result,
+            Model model,
+            RedirectAttributes flash,
+            Locale locale
+    ) {
         if (result.hasErrors()) {
             model.addAttribute("title", messageSource.getMessage("text.factura.form.titulo", null, locale));
             return "invoice/form";
@@ -91,19 +100,28 @@ public class InvoiceDrivingAdapter {
             return "invoice/form";
         }
 
-        final var items = IntStream.range(0, itemId.length).
-                mapToObj(i -> new Pair<>(itemId[i], amount[i])).toList();
-
-        Invoice invoice = createInvoiceUseCase.create(createInvoiceDto.getDescription(), createInvoiceDto.getObservation(), createInvoiceDto.getClient().getUuid(), items);
+        final var items = IntStream
+                .range(0, itemId.length)
+                .mapToObj(i -> new Pair<>(itemId[i], amount[i]))
+                .toList();
+        final var invoice = createInvoiceUseCase.create(
+                createInvoiceDto.getDescription(),
+                createInvoiceDto.getObservation(),
+                createInvoiceDto.getClient().getUuid(),
+                items
+        );
 
         flash.addFlashAttribute("success", messageSource.getMessage("text.factura.flash.crear.success", null, locale));
-
         return "redirect:/view/" + invoice.getClient().getUuid();
     }
 
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable(value = "id") UUID id, RedirectAttributes flash, Locale locale) {
-        Invoice invoice = findInvoiceUseCase.findById(id);
+    public String delete(
+            @PathVariable(value = "id") UUID id,
+            RedirectAttributes flash,
+            Locale locale
+    ) {
+        final var invoice = findInvoiceUseCase.findById(id);
 
         if (invoice != null) {
             deleteInvoiceUseCase.delete(id);
@@ -114,5 +132,4 @@ public class InvoiceDrivingAdapter {
         flash.addFlashAttribute("error", messageSource.getMessage("text.factura.flash.db.error", null, locale));
         return "redirect:/list/";
     }
-
 }
