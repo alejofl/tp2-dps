@@ -1,7 +1,7 @@
 package com.rt.springboot.app.adapter.driving;
 
 import com.rt.springboot.app.annotation.Adapter;
-import com.rt.springboot.app.port.driven.user.FindUserByUsernamePort;
+import com.rt.springboot.app.port.driving.user.FindUserByUsernameUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
 import org.springframework.ui.Model;
@@ -21,8 +21,8 @@ import java.util.Locale;
 @RequiredArgsConstructor
 @SessionAttributes("user")
 public class UserMvcAdapter {
-    private final FindUserByUsernamePort findUserByUsernamePort;
-    private final CreateUserPort createUserPort;
+    private final FindUserByUsernameUseCase findByUsernameUseCase;
+    private final CreateUserUseCase createUserUseCase;
 
     private final MessageSource messageSource;
 
@@ -68,13 +68,13 @@ public class UserMvcAdapter {
             Principal principal,
             Errors errors
     ) {
-        if (findUserByUsernamePort.findByUsername(user.getUsername()) != null ) {
+        if (findByUsernameUseCase.findByUsername(user.getUsername()) != null ) {
             model.addAttribute("warning", messageSource.getMessage("text.signup.existe", null, locale));
             return "signup";
         }
 
         // TODO expand to fields
-        createUserPort.create(user);
+        createUserUseCase.create(user);
 
         flash.addFlashAttribute("success", messageSource.getMessage("text.signup.flash.crear.success", null, locale));
         return "redirect:/login";
