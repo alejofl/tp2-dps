@@ -1,12 +1,13 @@
 package com.rt.springboot.app.adapter.driving;
 
+import com.rt.springboot.app.adapter.driving.dto.CreateUserDto;
 import com.rt.springboot.app.annotation.Adapter;
+import com.rt.springboot.app.port.driving.user.CreateUserUseCase;
 import com.rt.springboot.app.port.driving.user.FindUserByUsernameUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -64,17 +65,21 @@ public class UserMvcAdapter {
             BindingResult result,
             Model model,
             RedirectAttributes flash,
-            Locale locale,
-            Principal principal,
-            Errors errors
+            Locale locale
     ) {
-        if (findByUsernameUseCase.findByUsername(user.getUsername()) != null ) {
+        if (result.hasErrors()) {
+            return "signup";
+        }
+
+        if (findByUsernameUseCase.findByUsername(user.getUsername()) != null) {
             model.addAttribute("warning", messageSource.getMessage("text.signup.existe", null, locale));
             return "signup";
         }
 
-        // TODO expand to fields
-        createUserUseCase.create(user);
+        createUserUseCase.create(
+                user.getUsername(),
+                user.getPassword()
+        );
 
         flash.addFlashAttribute("success", messageSource.getMessage("text.signup.flash.crear.success", null, locale));
         return "redirect:/login";
