@@ -4,6 +4,8 @@ import com.rt.springboot.app.adapter.driving.dto.ClientDto;
 import com.rt.springboot.app.adapter.driving.dto.ClientMapper;
 import com.rt.springboot.app.annotation.Adapter;
 import com.rt.springboot.app.model.Client;
+import com.rt.springboot.app.port.driving.attachment.FindAttachmentUseCase;
+import com.rt.springboot.app.port.driving.attachment.UploadAttachmentUseCase;
 import com.rt.springboot.app.port.driving.client.DeleteClientUseCase;
 import com.rt.springboot.app.port.driving.client.FindAllClientsUseCase;
 import com.rt.springboot.app.port.driving.client.FindClientUseCase;
@@ -20,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
@@ -33,21 +36,22 @@ public class ClientMvcAdapter {
     private final FindClientUseCase findClientUseCase;
     private final CreateOrUpdateClientUseCase createOrUpdateClientUseCase;
     private final DeleteClientUseCase deleteClientUseCase;
+    private final FindAttachmentUseCase findAttachmentUseCase;
+    private final UploadAttachmentUseCase uploadAttachmentUseCase;
 
     private final MessageSource messageSource;
 
     @Secured("ROLE_USER")
     @GetMapping("/uploads/{filename:.+}")
-    public ResponseEntity<Resource> viewPhoto(
+    public ResponseEntity<byte[]> viewPhoto(
             @PathVariable String filename
     ) {
-        // TODO
-        final var resource = uploadFileService.load(filename);
+        final var resource = findAttachmentUseCase.findByFilename(filename);
 
         return ResponseEntity
                 .ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
-                .body(resource);
+                .header(HttpHeaders.CONTENT_DISPOSITION, String.format("inline; filename=\"%s\"", resource.getFilename()))
+                .body(resource.getBytes());
     }
 
     @Secured("ROLE_USER")
@@ -140,10 +144,17 @@ public class ClientMvcAdapter {
         }
 
         if (!photo.isEmpty()) {
-            // TODO upload photo
+            try {
+                final var resource = uploadAttachmentUseCase.upload(
+                        photo.getName(),
+                        photo.getBytes()
+                );
 
-            flash.addFlashAttribute("info", messageSource.getMessage("text.cliente.flash.foto.subir.success", null, locale) + "'" + uniqueFilename + "'");
-            client.setPhoto(filename);
+                flash.addFlashAttribute("info", messageSource.getMessage("text.cliente.flash.foto.subir.success", null, locale) + "'" + uniqueFilename + "'");
+                client.setPhoto(resource.getFilename());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
         final var flashMsg = (client.getId() != null)
