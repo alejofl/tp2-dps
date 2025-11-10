@@ -62,12 +62,12 @@
 
 					<div class="form-group row">
 						<label class="col-sm-3 col-form-label"
-							th:text="#{text.cliente.createAt}">Fecha</label>
+							th:text="#{text.cliente.createdAt}">Fecha</label>
 						<div class="col-sm-9">
-							<input type="date" class="form-control" th:field="*{createAt}"
+							<input type="date" class="form-control" th:field="*{createdAt}"
 								th:errorclass="'form-control alert-danger'" /> <small
 								class="form-text text-danger"
-								th:if="${#fields.hasErrors('createAt')}" th:errors="*{createAt}"></small>
+								th:if="${#fields.hasErrors('createdAt')}" th:errors="*{createdAt}"></small>
 						</div>
 					</div>
 

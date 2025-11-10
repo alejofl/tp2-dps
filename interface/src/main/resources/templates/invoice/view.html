@@ -38,7 +38,7 @@
 							<li
 								class="list-group-item list-group-item-primary font-weight-bold"
 								th:text="#{text.factura.ver.datos.cliente}"></li>
-							<li class="list-group-item" th:text="${invoice.client}"></li>
+							<li class="list-group-item" th:text="${invoice.client.firstName} + ' ' + ${invoice.client.lastName}"></li>
 							<li class="list-group-item" th:text="${invoice.client.email}"></li>
 						</ul>
 					</div>
@@ -54,7 +54,7 @@
 							<li class="list-group-item"
 								th:text="#{text.cliente.factura.descripcion} + ': ' + ${invoice.description}"></li>
 							<li class="list-group-item"
-								th:text="#{text.cliente.factura.fecha} + ': ' + ${invoice.createAt}"></li>
+								th:text="#{text.cliente.factura.fecha} + ': ' + ${invoice.createdAt}"></li>
 						</ul>
 					</div>
 				</div>
@@ -79,7 +79,7 @@
 								<td th:text="${line.product.name}"></td>
 								<td class="text-center" th:text="${line.product.price}"></td>
 								<td class="text-center" th:text="${line.amount}"></td>
-								<td th:text="${line.calculateImport()}"></td>
+								<td th:text="${line.subtotal}"></td>
 							</tr>
 						</tbody>
 

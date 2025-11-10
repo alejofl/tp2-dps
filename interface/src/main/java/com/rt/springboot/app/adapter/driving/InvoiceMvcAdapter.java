@@ -3,6 +3,8 @@ package com.rt.springboot.app.adapter.driving;
 import com.rt.springboot.app.Pair;
 import com.rt.springboot.app.adapter.driving.dto.ClientMapper;
 import com.rt.springboot.app.adapter.driving.dto.CreateInvoiceDto;
+import com.rt.springboot.app.adapter.driving.dto.InvoiceDto;
+import com.rt.springboot.app.adapter.driving.dto.InvoiceMapper;
 import com.rt.springboot.app.annotation.DrivingAdapter;
 import com.rt.springboot.app.port.driving.client.FindClientUseCase;
 import com.rt.springboot.app.port.driving.invoice.CreateInvoiceUseCase;
@@ -41,15 +43,13 @@ public class InvoiceMvcAdapter {
             RedirectAttributes flash,
             Locale locale
     ) {
-        // TODO map this to a dto
         final var invoice = findInvoiceUseCase.findById(id);
-
         if (invoice == null) {
             flash.addAttribute("error", messageSource.getMessage("text.factura.flash.db.error", null, locale));
             return "redirect:/list";
         }
 
-        model.addAttribute("invoice", invoice);
+        model.addAttribute("invoice", InvoiceMapper.INSTANCE.toDto(invoice));
         model.addAttribute("title", String.format(messageSource.getMessage("text.factura.ver.titulo", null, locale), invoice.getDescription()));
 
         return "invoice/view";
@@ -130,6 +130,6 @@ public class InvoiceMvcAdapter {
         }
 
         flash.addFlashAttribute("error", messageSource.getMessage("text.factura.flash.db.error", null, locale));
-        return "redirect:/list/";
+        return "redirect:/list";
     }
 }

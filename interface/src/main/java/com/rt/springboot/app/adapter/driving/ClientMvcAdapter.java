@@ -2,10 +2,12 @@ package com.rt.springboot.app.adapter.driving;
 
 import com.rt.springboot.app.adapter.driving.dto.ClientMapper;
 import com.rt.springboot.app.adapter.driving.dto.CreateClientDto;
+import com.rt.springboot.app.adapter.driving.dto.InvoiceMapper;
 import com.rt.springboot.app.annotation.DrivingAdapter;
 import com.rt.springboot.app.port.driving.attachment.FindAttachmentUseCase;
 import com.rt.springboot.app.port.driving.attachment.UploadAttachmentUseCase;
 import com.rt.springboot.app.port.driving.client.*;
+import com.rt.springboot.app.port.driving.invoice.FindInvoicesForClientUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpHeaders;
@@ -34,6 +36,7 @@ public class ClientMvcAdapter {
     private final DeleteClientUseCase deleteClientUseCase;
     private final FindAttachmentUseCase findAttachmentUseCase;
     private final UploadAttachmentUseCase uploadAttachmentUseCase;
+    private final FindInvoicesForClientUseCase findInvoicesForClientUseCase;
 
     private final MessageSource messageSource;
 
@@ -59,13 +62,17 @@ public class ClientMvcAdapter {
             Locale locale
     ) {
         final var client = findClientUseCase.findById(id);
-
         if (client == null) {
             flash.addFlashAttribute("error", messageSource.getMessage("text.cliente.flash.db.error", null, locale));
             return "redirect:/list";
         }
+        final var invoices = findInvoicesForClientUseCase.findInvoicesForClient(client)
+                .stream()
+                .map(InvoiceMapper.INSTANCE::toDto)
+                .toList();
 
-        model.addAttribute("client", client);
+        model.addAttribute("client", ClientMapper.INSTANCE.toDto(client));
+        model.addAttribute("invoices", invoices);
         model.addAttribute("title", messageSource.getMessage("text.cliente.listar.titulo", null, locale) + ": "+ client.getFirstName());
 
         return "view";
@@ -117,7 +124,7 @@ public class ClientMvcAdapter {
             flash.addFlashAttribute("error", messageSource.getMessage("text.cliente.flash.db.error", null, locale));
             return "redirect:/list";
         }
-        model.addAttribute("client", ClientMapper.INSTANCE.toDto(client));
+        model.addAttribute("client", ClientMapper.INSTANCE.toCreateDto(client));
         model.addAttribute("title", messageSource.getMessage("text.cliente.form.titulo.editar", null, locale));
 
         return "form";
@@ -160,9 +167,9 @@ public class ClientMvcAdapter {
                 : messageSource.getMessage("text.cliente.flash.crear.success", null, locale);
 
         if (client.getId() != null) {
-            updateClientUseCase.update(client.getId(), client.getFirstName(), client.getLastName(), client.getEmail(), client.getCreateDate(), client.getPhoto());
+            updateClientUseCase.update(client.getId(), client.getFirstName(), client.getLastName(), client.getEmail(), client.getCreatedAt(), client.getPhoto());
         } else {
-            createClientUseCase.create(client.getFirstName(), client.getLastName(), client.getEmail(), client.getCreateDate(), client.getPhoto());
+            createClientUseCase.create(client.getFirstName(), client.getLastName(), client.getEmail(), client.getCreatedAt(), client.getPhoto());
         }
 
         flash.addFlashAttribute("success", flashMsg);

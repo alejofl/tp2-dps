@@ -13,6 +13,6 @@ public class CreateClientDto {
     private String firstName;
     private String lastName;
     private String email;
-    private LocalDate createDate;
+    private LocalDate createdAt;
     private String photo;
 }

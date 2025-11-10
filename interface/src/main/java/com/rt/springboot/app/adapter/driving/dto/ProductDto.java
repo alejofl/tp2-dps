@@ -3,17 +3,14 @@ package com.rt.springboot.app.adapter.driving.dto;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-import java.time.LocalDate;
 import java.util.UUID;
 
 @Data
 @RequiredArgsConstructor
-public class ClientDto {
+public class ProductDto {
     private String id;
     private UUID uuid;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String photo;
+    private String name;
+    private String price;
     private String createdAt;
 }

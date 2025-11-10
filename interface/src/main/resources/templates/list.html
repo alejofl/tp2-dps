@@ -41,7 +41,7 @@
 								<th th:text="#{text.cliente.nombre}">first name</th>
 								<th th:text="#{text.cliente.apellido}">last name</th>
 								<th th:text="#{text.cliente.email}">email</th>
-								<th th:text="#{text.cliente.createAt}">date</th>
+								<th th:text="#{text.cliente.createdAt}">date</th>
 								<th sec:authorize="hasRole('ROLE_ADMIN')"
 									th:text="#{text.factura.form.titulo}">create invoice</th>
 								<th sec:authorize="hasRole('ROLE_ADMIN')"
@@ -58,7 +58,7 @@
 								<td th:text="${client.firstName}"></td>
 								<td th:text="${client.lastName}"></td>
 								<td th:text="${client.email}"></td>
-								<td th:text="${client.createAt}"></td>
+								<td th:text="${client.createdAt}"></td>
 								<td sec:authorize="hasRole('ROLE_ADMIN')" class="text-center"><a
 										class="btn btn-indigo btn-md"
 										th:href="@{'/invoice/form/' + ${client.id}}">
