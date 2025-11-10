@@ -2,7 +2,7 @@ package com.rt.springboot.app.adapter.driving;
 
 import com.rt.springboot.app.adapter.driving.dto.ClientMapper;
 import com.rt.springboot.app.adapter.driving.dto.CreateClientDto;
-import com.rt.springboot.app.annotation.Adapter;
+import com.rt.springboot.app.annotation.DrivingAdapter;
 import com.rt.springboot.app.port.driving.attachment.FindAttachmentUseCase;
 import com.rt.springboot.app.port.driving.attachment.UploadAttachmentUseCase;
 import com.rt.springboot.app.port.driving.client.*;
@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.UUID;
 
-@Adapter
+@DrivingAdapter
 @RequiredArgsConstructor
 @SessionAttributes("client")
 public class ClientMvcAdapter {

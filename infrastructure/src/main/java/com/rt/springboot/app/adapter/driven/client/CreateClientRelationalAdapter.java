@@ -1,13 +1,13 @@
 package com.rt.springboot.app.adapter.driven.client;
 
-import com.rt.springboot.app.annotation.Adapter;
+import com.rt.springboot.app.annotation.DrivenAdapter;
 import com.rt.springboot.app.model.Client;
 import com.rt.springboot.app.port.driven.client.CreateClientPort;
 import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;
 
-@Adapter
+@DrivenAdapter
 @RequiredArgsConstructor
 public class CreateClientRelationalAdapter implements CreateClientPort {
 

@@ -1,14 +1,14 @@
 package com.rt.springboot.app.adapter.driven.invoice;
 
 import com.rt.springboot.app.adapter.driven.product.ProductRepository;
-import com.rt.springboot.app.annotation.Adapter;
+import com.rt.springboot.app.annotation.DrivenAdapter;
 import com.rt.springboot.app.model.Invoice;
 import com.rt.springboot.app.model.InvoiceItem;
 import com.rt.springboot.app.model.Product;
 import com.rt.springboot.app.port.driven.invoice.CreateInvoiceItemPort;
 import lombok.RequiredArgsConstructor;
 
-@Adapter
+@DrivenAdapter
 @RequiredArgsConstructor
 public class CreateInvoiceItemRelationalAdapter implements CreateInvoiceItemPort {
 

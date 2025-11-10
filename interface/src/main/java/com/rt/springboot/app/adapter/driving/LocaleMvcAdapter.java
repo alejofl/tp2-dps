@@ -1,11 +1,11 @@
 package com.rt.springboot.app.adapter.driving;
 
-import com.rt.springboot.app.annotation.Adapter;
+import com.rt.springboot.app.annotation.DrivingAdapter;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import jakarta.servlet.http.HttpServletRequest;
 
-@Adapter
+@DrivingAdapter
 public class LocaleMvcAdapter {
     @GetMapping("/locale")
     public String locale(HttpServletRequest request) {

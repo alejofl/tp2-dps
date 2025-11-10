@@ -22,7 +22,7 @@ public class UserRelationalEntity {
     @Column
     private boolean enabled;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private List<RoleRelationalEntity> authorities;
 }

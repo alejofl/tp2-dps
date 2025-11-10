@@ -1,13 +1,12 @@
 package com.rt.springboot.app.adapter.driven.invoice;
 
-import com.rt.springboot.app.annotation.Adapter;
+import com.rt.springboot.app.annotation.DrivenAdapter;
 import com.rt.springboot.app.port.driven.invoice.DeleteInvoicePort;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
-@Adapter
+@DrivenAdapter
 @RequiredArgsConstructor
 public class DeleteInvoiceRelationalAdapter implements DeleteInvoicePort {
 

@@ -3,7 +3,7 @@ package com.rt.springboot.app.adapter.driving;
 import com.rt.springboot.app.Pair;
 import com.rt.springboot.app.adapter.driving.dto.ClientMapper;
 import com.rt.springboot.app.adapter.driving.dto.CreateInvoiceDto;
-import com.rt.springboot.app.annotation.Adapter;
+import com.rt.springboot.app.annotation.DrivingAdapter;
 import com.rt.springboot.app.port.driving.client.FindClientUseCase;
 import com.rt.springboot.app.port.driving.invoice.CreateInvoiceUseCase;
 import com.rt.springboot.app.port.driving.invoice.DeleteInvoiceUseCase;
@@ -21,7 +21,7 @@ import java.util.*;
 import java.util.stream.IntStream;
 
 @Secured("ROLE_ADMIN")
-@Adapter
+@DrivingAdapter
 @RequiredArgsConstructor
 @RequestMapping("/invoice")
 @SessionAttributes("invoice")

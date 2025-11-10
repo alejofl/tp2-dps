@@ -1,14 +1,13 @@
 package com.rt.springboot.app.adapter.driven.invoice;
 
-import com.rt.springboot.app.annotation.Adapter;
+import com.rt.springboot.app.annotation.DrivenAdapter;
 import com.rt.springboot.app.model.Invoice;
 import com.rt.springboot.app.port.driven.invoice.FindInvoicePort;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
-@Adapter
+@DrivenAdapter
 @RequiredArgsConstructor
 public class FindInvoiceRelationalAdapter implements FindInvoicePort {
 

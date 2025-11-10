@@ -1,13 +1,13 @@
 package com.rt.springboot.app.adapter.driven.user;
 
-import com.rt.springboot.app.annotation.Adapter;
+import com.rt.springboot.app.annotation.DrivenAdapter;
 import com.rt.springboot.app.model.User;
 import com.rt.springboot.app.port.driven.user.CreateUserPort;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
-@Adapter
+@DrivenAdapter
 @RequiredArgsConstructor
 public class CreateUserRelationalAdapter implements CreateUserPort {
     private final UserRepository userRepository;

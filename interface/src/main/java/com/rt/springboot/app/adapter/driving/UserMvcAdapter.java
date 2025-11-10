@@ -1,7 +1,7 @@
 package com.rt.springboot.app.adapter.driving;
 
 import com.rt.springboot.app.adapter.driving.dto.CreateUserDto;
-import com.rt.springboot.app.annotation.Adapter;
+import com.rt.springboot.app.annotation.DrivingAdapter;
 import com.rt.springboot.app.port.driving.user.CreateUserUseCase;
 import com.rt.springboot.app.port.driving.user.FindUserByUsernameUseCase;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,7 @@ import jakarta.validation.Valid;
 import java.security.Principal;
 import java.util.Locale;
 
-@Adapter
+@DrivingAdapter
 @RequiredArgsConstructor
 @SessionAttributes("user")
 public class UserMvcAdapter {

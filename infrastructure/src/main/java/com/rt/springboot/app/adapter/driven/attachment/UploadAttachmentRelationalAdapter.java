@@ -1,11 +1,11 @@
 package com.rt.springboot.app.adapter.driven.attachment;
 
-import com.rt.springboot.app.annotation.Adapter;
+import com.rt.springboot.app.annotation.DrivenAdapter;
 import com.rt.springboot.app.model.Attachment;
 import com.rt.springboot.app.port.driven.attachment.UploadAttachmentPort;
 import lombok.RequiredArgsConstructor;
 
-@Adapter
+@DrivenAdapter
 @RequiredArgsConstructor
 public class UploadAttachmentRelationalAdapter implements UploadAttachmentPort {
     private final AttachmentRepository attachmentRepository;

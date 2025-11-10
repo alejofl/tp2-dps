@@ -1,6 +1,6 @@
 package com.rt.springboot.app.adapter.driven.client;
 
-import com.rt.springboot.app.annotation.Adapter;
+import com.rt.springboot.app.annotation.DrivenAdapter;
 import com.rt.springboot.app.model.Client;
 import com.rt.springboot.app.port.driven.client.UpdateClientPort;
 import lombok.RequiredArgsConstructor;
@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 import java.time.LocalDate;
 import java.util.UUID;
 
-@Adapter
+@DrivenAdapter
 @RequiredArgsConstructor
 public class UpdateClientRelationalAdapter implements UpdateClientPort {
 
