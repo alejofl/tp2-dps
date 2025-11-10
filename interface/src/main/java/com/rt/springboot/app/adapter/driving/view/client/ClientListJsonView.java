@@ -1,12 +1,10 @@
-package com.rt.springboot.app.view.json;
+package com.rt.springboot.app.adapter.driving.view.client;
 
 import java.util.Map;
 
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
-import com.rt.springboot.app.models.entity.Client;
 
 @Component("list.json")
 public class ClientListJsonView extends MappingJackson2JsonView {
@@ -16,16 +14,7 @@ public class ClientListJsonView extends MappingJackson2JsonView {
 
 		model.remove("title");
 		model.remove("page");
-		
-		@SuppressWarnings("unchecked")
-		Page<Client> clients = (Page<Client>) model.get("clients");
-		
-		model.remove("clients");
-		model.put("clients", clients.getContent());
-		
+
 		return super.filterModel(model);
 	}
-	
-	
-
 }
