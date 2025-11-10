@@ -2,7 +2,7 @@ package com.rt.springboot.app.adapter.driven.attachment;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Data
 @Entity
@@ -15,6 +15,7 @@ public class AttachmentRelationalEntity {
     @Column
     private String filename;
 
-    @Column
+    @Lob
+    @Column(name = "bytes", columnDefinition = "BLOB")
     private byte[] bytes;
 }

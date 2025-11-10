@@ -3,7 +3,7 @@ package com.rt.springboot.app.adapter.driving;
 import com.rt.springboot.app.annotation.Adapter;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 @Adapter
 public class LocaleMvcAdapter {

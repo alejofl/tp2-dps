@@ -1,12 +1,11 @@
 package com.rt.springboot.app.adapter.driving.dto;
 
 import com.rt.springboot.app.annotation.PasswordsMatch;
+import jakarta.validation.constraints.AssertTrue;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-
-import javax.validation.constraints.AssertTrue;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 @Data
 @RequiredArgsConstructor

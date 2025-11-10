@@ -9,6 +9,5 @@ import java.util.List;
 import java.util.UUID;
 
 public interface CreateInvoicePort {
-
     Invoice create(UUID uuid, String description, String observation, LocalDate createdAt, Client client);
 }

@@ -23,5 +23,10 @@
             <version>${parent.version}</version>
             <artifactId>infrastructure</artifactId>
         </dependency>
+        <dependency>
+            <groupId>${parent.groupId}</groupId>
+            <version>${parent.version}</version>
+            <artifactId>interface</artifactId>
+        </dependency>
     </dependencies>
 </project>

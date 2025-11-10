@@ -2,7 +2,7 @@ package com.rt.springboot.app.adapter.driven.user;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Data
 @Entity
@@ -12,6 +12,6 @@ public class RoleRelationalEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
+    @Column
     private String authority;
 }

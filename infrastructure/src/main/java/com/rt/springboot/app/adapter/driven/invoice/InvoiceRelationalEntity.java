@@ -3,7 +3,7 @@ package com.rt.springboot.app.adapter.driven.invoice;
 import com.rt.springboot.app.adapter.driven.client.ClientRelationalEntity;
 import lombok.Data;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.sql.Date;
 import java.util.List;
 import java.util.UUID;

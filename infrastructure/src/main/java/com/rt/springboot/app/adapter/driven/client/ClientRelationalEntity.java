@@ -2,7 +2,7 @@ package com.rt.springboot.app.adapter.driven.client;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.sql.Date;
 import java.util.UUID;
 

@@ -2,8 +2,8 @@ package com.rt.springboot.app.validation;
 
 import com.rt.springboot.app.annotation.PasswordsMatch;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 import java.lang.reflect.Field;
 import java.util.Objects;
 

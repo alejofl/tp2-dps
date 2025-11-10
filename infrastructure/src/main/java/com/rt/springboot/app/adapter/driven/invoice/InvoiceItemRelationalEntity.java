@@ -3,7 +3,7 @@ package com.rt.springboot.app.adapter.driven.invoice;
 import com.rt.springboot.app.adapter.driven.product.ProductRelationalEntity;
 import lombok.Data;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Data
 @Entity
