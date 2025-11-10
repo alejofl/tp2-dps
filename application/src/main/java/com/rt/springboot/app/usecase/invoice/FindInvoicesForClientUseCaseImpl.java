@@ -16,6 +16,6 @@ public class FindInvoicesForClientUseCaseImpl implements FindInvoicesForClientUs
 
     @Override
     public List<Invoice> findInvoicesForClient(Client client) {
-        return findInvoicesByClientIdPort.findInvoicesByClientId(client.getUuid());
+        return findInvoicesByClientIdPort.findInvoicesByClientId(client.uuid());
     }
 }

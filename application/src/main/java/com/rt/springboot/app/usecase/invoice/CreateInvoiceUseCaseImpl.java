@@ -25,7 +25,7 @@ public class CreateInvoiceUseCaseImpl implements CreateInvoiceUseCase {
     public Invoice create(String description, String observation, UUID clientId, List<Pair<UUID, Integer>> items) {
         final var client = findClientUseCase.findById(clientId);
         Invoice invoice = createInvoicePort.create(UUID.randomUUID(), description, observation, LocalDate.now(), client);
-        items.forEach(item -> createInvoiceItemUseCase.create(invoice.getUuid(), item.first(), item.second()));
+        items.forEach(item -> createInvoiceItemUseCase.create(invoice.uuid(), item.first(), item.second()));
         return invoice;
     }
 }

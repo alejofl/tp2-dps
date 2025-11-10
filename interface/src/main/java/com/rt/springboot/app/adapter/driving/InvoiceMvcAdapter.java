@@ -49,7 +49,7 @@ public class InvoiceMvcAdapter {
         }
 
         model.addAttribute("invoice", InvoiceMapper.INSTANCE.toDto(invoice));
-        model.addAttribute("title", String.format(messageSource.getMessage("text.factura.ver.titulo", null, locale), invoice.getDescription()));
+        model.addAttribute("title", String.format(messageSource.getMessage("text.factura.ver.titulo", null, locale), invoice.description()));
 
         return "invoice/view";
     }
@@ -120,7 +120,7 @@ public class InvoiceMvcAdapter {
         );
 
         flash.addFlashAttribute("success", messageSource.getMessage("text.factura.flash.crear.success", null, locale));
-        return "redirect:/view/" + invoice.getClient().getUuid();
+        return "redirect:/view/" + invoice.client().uuid();
     }
 
     @GetMapping("/delete/{id}")
@@ -134,7 +134,7 @@ public class InvoiceMvcAdapter {
         if (invoice != null) {
             deleteInvoiceUseCase.delete(id);
             flash.addAttribute("success", messageSource.getMessage("text.factura.flash.eliminar.success", null, locale));
-            return "redirect:/view/" + invoice.getClient().getUuid();
+            return "redirect:/view/" + invoice.client().uuid();
         }
 
         flash.addFlashAttribute("error", messageSource.getMessage("text.factura.flash.db.error", null, locale));

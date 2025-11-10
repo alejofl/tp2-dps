@@ -21,7 +21,7 @@ public class CreateInvoiceRelationalAdapter implements CreateInvoicePort {
     @Override
     @Transactional
     public Invoice create(UUID uuid, String description, String observation, LocalDate createdAt, Client client) {
-        final var clientEntity = clientRepository.findByUuid(client.getUuid());
+        final var clientEntity = clientRepository.findByUuid(client.uuid());
         final var invoiceEntity = new InvoiceRelationalEntity();
         invoiceEntity.setUuid(uuid);
         invoiceEntity.setDescription(description);

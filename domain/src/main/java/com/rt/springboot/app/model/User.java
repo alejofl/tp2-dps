@@ -1,13 +1,10 @@
 package com.rt.springboot.app.model;
 
-import lombok.Data;
-
 import java.util.List;
 
-@Data
-public class User {
-    private String username;
-    private String password;
-    private boolean enabled;
-    private List<Role> authorities;
-}
+public record User(
+    String username,
+    String password,
+    boolean enabled,
+    List<Role> authorities
+) {}

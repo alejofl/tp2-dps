@@ -19,21 +19,21 @@ public class AppUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         final var user = findUserByUsernameUseCase.findByUsername(s);
-        if (user == null || user.getAuthorities().isEmpty()) {
+        if (user == null || user.authorities().isEmpty()) {
             throw new UsernameNotFoundException("Username " + s + " not found");
         }
 
         final var authorities = user
-                .getAuthorities()
+                .authorities()
                 .stream()
-                .map(Role::getAuthority)
+                .map(Role::authority)
                 .map(SimpleGrantedAuthority::new)
                 .toList();
 
         return new User(
-            user.getUsername(),
-            user.getPassword(),
-            user.isEnabled(),
+            user.username(),
+            user.password(),
+            user.enabled(),
             true,
             true,
             true,

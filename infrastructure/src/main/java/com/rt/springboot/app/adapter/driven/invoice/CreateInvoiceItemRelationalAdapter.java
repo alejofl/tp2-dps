@@ -21,8 +21,8 @@ public class CreateInvoiceItemRelationalAdapter implements CreateInvoiceItemPort
     @Transactional
     public InvoiceItem create(Invoice invoice, Product product, Integer amount) {
         final var invoiceItem = new InvoiceItemRelationalEntity();
-        final var productRelationalEntity = productRepository.findByUuid(product.getUuid());
-        final var invoiceRelationalEntity = invoiceRepository.findByUuid(invoice.getUuid());
+        final var productRelationalEntity = productRepository.findByUuid(product.uuid());
+        final var invoiceRelationalEntity = invoiceRepository.findByUuid(invoice.uuid());
 
         invoiceItem.setProduct(productRelationalEntity);
         invoiceItem.setAmount(amount);

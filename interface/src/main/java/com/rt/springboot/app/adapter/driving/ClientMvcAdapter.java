@@ -49,8 +49,8 @@ public class ClientMvcAdapter {
 
         return ResponseEntity
                 .ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, String.format("inline; filename=\"%s\"", resource.getFilename()))
-                .body(resource.getBytes());
+                .header(HttpHeaders.CONTENT_DISPOSITION, String.format("inline; filename=\"%s\"", resource.filename()))
+                .body(resource.bytes());
     }
 
     @Secured("ROLE_USER")
@@ -73,7 +73,7 @@ public class ClientMvcAdapter {
 
         model.addAttribute("client", ClientMapper.INSTANCE.toDto(client));
         model.addAttribute("invoices", invoices);
-        model.addAttribute("title", messageSource.getMessage("text.cliente.listar.titulo", null, locale) + ": "+ client.getFirstName());
+        model.addAttribute("title", messageSource.getMessage("text.cliente.listar.titulo", null, locale) + ": "+ client.firstName());
 
         return "view";
     }
@@ -154,9 +154,9 @@ public class ClientMvcAdapter {
 
                 flash.addFlashAttribute(
                         "info",
-                        messageSource.getMessage("text.cliente.flash.foto.subir.success", null, locale) + "'" + resource.getFilename() + "'"
+                        messageSource.getMessage("text.cliente.flash.foto.subir.success", null, locale) + "'" + resource.filename() + "'"
                 );
-                client.setPhoto(resource.getFilename());
+                client.setPhoto(resource.filename());
             } catch (IOException e) {
                 e.printStackTrace();
             }
