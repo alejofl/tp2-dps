@@ -15,10 +15,10 @@ public interface InvoiceItemMapper {
     InvoiceItemDto toDto(InvoiceItem item);
 
     default String calculateSubtotal(InvoiceItem item) {
-        if (item == null || item.getProduct() == null || item.getProduct().getPrice() == null) {
+        if (item == null || item.product() == null || item.product().price() == null) {
             return null;
         }
-        final var subtotal = item.getProduct().getPrice().multiply(BigDecimal.valueOf(item.getAmount()));
+        final var subtotal = item.product().price().multiply(BigDecimal.valueOf(item.amount()));
         return CommonFieldsMapper.bigDecimalToString(subtotal);
     }
 }

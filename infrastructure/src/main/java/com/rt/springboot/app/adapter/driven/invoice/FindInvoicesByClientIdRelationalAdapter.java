@@ -3,6 +3,7 @@ package com.rt.springboot.app.adapter.driven.invoice;
 import com.rt.springboot.app.annotation.DrivenAdapter;
 import com.rt.springboot.app.model.Invoice;
 import com.rt.springboot.app.port.driven.invoice.FindInvoicesByClientIdPort;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public class FindInvoicesByClientIdRelationalAdapter implements FindInvoicesByCl
     private final InvoiceRepository invoiceRepository;
 
     @Override
+    @Transactional
     public List<Invoice> findInvoicesByClientId(UUID id) {
         return invoiceRepository.findByClientUuid(id).stream().map(InvoiceMapper.INSTANCE::toDomain).toList();
     }

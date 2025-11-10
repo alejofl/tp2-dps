@@ -2,6 +2,7 @@ package com.rt.springboot.app.adapter.driven.product;
 
 import com.rt.springboot.app.model.Product;
 import com.rt.springboot.app.port.driven.product.FindProductPort;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +15,7 @@ public class FindProductRelationalAdapter implements FindProductPort {
     private final ProductRepository productRepository;
 
     @Override
+    @Transactional
     public Product findById(UUID id) {
         final var result = this.productRepository.findByUuid(id);
         return ProductMapper.INSTANCE.toDomain(result);

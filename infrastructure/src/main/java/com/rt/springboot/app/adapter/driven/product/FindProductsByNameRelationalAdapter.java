@@ -2,6 +2,7 @@ package com.rt.springboot.app.adapter.driven.product;
 
 import com.rt.springboot.app.model.Product;
 import com.rt.springboot.app.port.driven.product.FindProductsByNamePort;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +15,7 @@ public class FindProductsByNameRelationalAdapter implements FindProductsByNamePo
     private final ProductRepository productRepository;
 
     @Override
+    @Transactional
     public List<Product> findByName(String term) {
         return this.productRepository
                 .findByNameContaining(term)

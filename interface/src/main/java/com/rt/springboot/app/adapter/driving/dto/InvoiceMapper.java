@@ -22,14 +22,14 @@ public interface InvoiceMapper {
     InvoiceDto toDto(Invoice invoice);
 
     default String calculateTotal(Invoice invoice) {
-        if (invoice == null || invoice.getItems() == null) {
+        if (invoice == null || invoice.items() == null) {
             return null;
         }
 
-        final var total = invoice.getItems()
+        final var total = invoice.items()
                 .stream()
-                .filter(i -> i.getProduct() != null && i.getProduct().getPrice() != null)
-                .map(i -> i.getProduct().getPrice().multiply(BigDecimal.valueOf(i.getAmount())))
+                .filter(i -> i.product() != null && i.product().price() != null)
+                .map(i -> i.product().price().multiply(BigDecimal.valueOf(i.amount())))
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
         return CommonFieldsMapper.bigDecimalToString(total);
