@@ -1,17 +1,13 @@
 package com.rt.springboot.app.adapter.driving;
 
-import com.rt.springboot.app.adapter.driving.dto.ClientDto;
 import com.rt.springboot.app.adapter.driving.dto.ClientMapper;
+import com.rt.springboot.app.adapter.driving.dto.CreateClientDto;
 import com.rt.springboot.app.annotation.Adapter;
-import com.rt.springboot.app.model.Client;
 import com.rt.springboot.app.port.driving.attachment.FindAttachmentUseCase;
 import com.rt.springboot.app.port.driving.attachment.UploadAttachmentUseCase;
-import com.rt.springboot.app.port.driving.client.DeleteClientUseCase;
-import com.rt.springboot.app.port.driving.client.FindAllClientsUseCase;
-import com.rt.springboot.app.port.driving.client.FindClientUseCase;
+import com.rt.springboot.app.port.driving.client.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
-import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
@@ -23,7 +19,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.io.IOException;
-import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
@@ -34,7 +29,8 @@ public class ClientMvcAdapter {
 
     private final FindAllClientsUseCase findAllClientsUseCase;
     private final FindClientUseCase findClientUseCase;
-    private final CreateOrUpdateClientUseCase createOrUpdateClientUseCase;
+    private final CreateClientUseCase createClientUseCase;
+    private final UpdateClientUseCase updateClientUseCase;
     private final DeleteClientUseCase deleteClientUseCase;
     private final FindAttachmentUseCase findAttachmentUseCase;
     private final UploadAttachmentUseCase uploadAttachmentUseCase;
@@ -115,14 +111,13 @@ public class ClientMvcAdapter {
             RedirectAttributes flash,
             Locale locale
     ) {
-        // TODO map to createclientdto
         final var client = findClientUseCase.findById(id);
 
         if (client == null) {
             flash.addFlashAttribute("error", messageSource.getMessage("text.cliente.flash.db.error", null, locale));
             return "redirect:/list";
         }
-        model.addAttribute("client", client);
+        model.addAttribute("client", ClientMapper.INSTANCE.toDto(client));
         model.addAttribute("title", messageSource.getMessage("text.cliente.form.titulo.editar", null, locale));
 
         return "form";
@@ -150,7 +145,10 @@ public class ClientMvcAdapter {
                         photo.getBytes()
                 );
 
-                flash.addFlashAttribute("info", messageSource.getMessage("text.cliente.flash.foto.subir.success", null, locale) + "'" + uniqueFilename + "'");
+                flash.addFlashAttribute(
+                        "info",
+                        messageSource.getMessage("text.cliente.flash.foto.subir.success", null, locale) + "'" + resource.getFilename() + "'"
+                );
                 client.setPhoto(resource.getFilename());
             } catch (IOException e) {
                 e.printStackTrace();
@@ -161,7 +159,11 @@ public class ClientMvcAdapter {
                 ? messageSource.getMessage("text.cliente.flash.editar.success", null, locale)
                 : messageSource.getMessage("text.cliente.flash.crear.success", null, locale);
 
-        createOrUpdateClientUseCase.createOrUpdate(client);
+        if (client.getId() != null) {
+            updateClientUseCase.update(client.getId(), client.getFirstName(), client.getLastName(), client.getEmail(), client.getCreateDate(), client.getPhoto());
+        } else {
+            createClientUseCase.create(client.getFirstName(), client.getLastName(), client.getEmail(), client.getCreateDate(), client.getPhoto());
+        }
 
         flash.addFlashAttribute("success", flashMsg);
         return "redirect:/list";
