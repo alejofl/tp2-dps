@@ -1,11 +1,12 @@
-package com.rt.springboot.app.view.pdf;
+package com.rt.springboot.app.adapter.driving.view.invoice;
 
 
 import java.awt.Color;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import com.rt.springboot.app.adapter.driving.dto.InvoiceDto;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.stereotype.Component;
@@ -17,25 +18,27 @@ import com.lowagie.text.pdf.PdfCell;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
-import com.rt.springboot.app.models.entity.Invoice;
-import com.rt.springboot.app.models.entity.ItemInvoice;
 
 @Component("invoice/view")
 public class InvoicePdfView extends AbstractPdfView {
 
 	@Override
-	protected void buildPdfDocument(Map<String, Object> model, Document document, PdfWriter writer,
-			HttpServletRequest request, HttpServletResponse response) throws Exception {
+	protected void buildPdfDocument(
+			Map<String, Object> model,
+			Document document,
+			PdfWriter writer,
+			HttpServletRequest request,
+			HttpServletResponse response
+	) {
 
-		Invoice invoice = (Invoice) model.get("invoice");
+		final var invoice = (InvoiceDto) model.get("invoice");
 		
 		MessageSourceAccessor message = getMessageSourceAccessor();
 
 		// Detalles del Cliente
-		PdfPTable table = new PdfPTable(1);
+		final var table = new PdfPTable(1);
 		table.setSpacingAfter(20);
-		PdfPCell cell = null;		
-		cell = new PdfPCell(new Phrase(message.getMessage("text.factura.ver.datos.cliente")));
+		final var cell = new PdfPCell(new Phrase(message.getMessage("text.factura.ver.datos.cliente")));
 		cell.setBackgroundColor(new Color(184, 218, 255));
 		cell.setPadding(8f);
 		table.addCell(cell);
@@ -43,38 +46,38 @@ public class InvoicePdfView extends AbstractPdfView {
 		table.addCell(invoice.getClient().getEmail());
 		
 		// Detalles de Factura
-		PdfPTable table2 = new PdfPTable(1);
+		final var table2 = new PdfPTable(1);
 		table2.setSpacingAfter(20);
-		cell = new PdfPCell(new Phrase(message.getMessage("text.factura.ver.datos.factura")));
-		cell.setBackgroundColor(new Color(195, 230, 203));
-		cell.setPadding(8f);
-		table2.addCell(cell);
+		final var cell2 = new PdfPCell(new Phrase(message.getMessage("text.factura.ver.datos.factura")));
+		cell2.setBackgroundColor(new Color(195, 230, 203));
+		cell2.setPadding(8f);
+		table2.addCell(cell2);
 		table2.addCell(message.getMessage("text.cliente.factura.folio")+ ": " + invoice.getId());
 		table2.addCell(message.getMessage("text.cliente.factura.descripcion")+ ": " + invoice.getDescription());
-		table2.addCell(message.getMessage("text.cliente.factura.fecha")+ ": " + invoice.getCreateAt());
+		table2.addCell(message.getMessage("text.cliente.factura.fecha")+ ": " + invoice.getCreatedAt());
 	
 		// Tabla de Productos
-		PdfPTable table3 = new PdfPTable(4);
+		final var table3 = new PdfPTable(4);
 		table3.setWidths(new float[] {3.5f, 1, 1, 1});
 		table3.addCell(message.getMessage("text.factura.form.item.nombre"));
 		table3.addCell(message.getMessage("text.factura.form.item.precio"));
 		table3.addCell(message.getMessage("text.factura.form.item.cantidad"));
 		table3.addCell(message.getMessage("text.factura.form.item.total"));
-		
-		for(ItemInvoice item : invoice.getItems()) {
+
+		invoice.getItems().forEach(item -> {
 			table3.addCell(item.getProduct().getName());
-			table3.addCell(item.getProduct().getPrice().toString());
-			cell = new PdfPCell(new Phrase(item.getAmount().toString()));
-			cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
-			table3.addCell(cell);
-			table3.addCell(item.calculateImport().toString());
-		}
+			table3.addCell(item.getProduct().getPrice());
+			final var itemCell = new PdfPCell(new Phrase(String.format("%d", item.getAmount())));
+			itemCell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+			table3.addCell(itemCell);
+			table3.addCell(item.getSubtotal());
+		});
 		
-		cell = new PdfPCell(new Phrase(message.getMessage("text.factura.form.total")));
-		cell.setColspan(3);
-		cell.setHorizontalAlignment(PdfCell.ALIGN_RIGHT);
-		table3.addCell(cell);
-		table3.addCell(invoice.getTotal().toString());
+		final var cell4 = new PdfPCell(new Phrase(message.getMessage("text.factura.form.total")));
+		cell4.setColspan(3);
+		cell4.setHorizontalAlignment(PdfCell.ALIGN_RIGHT);
+		table3.addCell(cell4);
+		table3.addCell(invoice.getTotal());
 		
 		document.add(table);
 		document.add(table2);
