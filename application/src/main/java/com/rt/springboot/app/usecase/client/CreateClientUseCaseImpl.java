@@ -17,6 +17,6 @@ public class CreateClientUseCaseImpl implements CreateClientUseCase {
 
     @Override
     public Client create(String firstName, String lastName, String email, LocalDate createDate, String photo) {
-        return createClientPort.create(firstName, lastName, email, createDate, photo);
+        return createClientPort.create(UUID.randomUUID(), firstName, lastName, email, createDate, photo);
     }
 }

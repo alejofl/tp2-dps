@@ -17,6 +17,9 @@
 				<form th:action="@{/form}" th:object="${client}" method="post"
 					enctype="multipart/form-data" class="col-lg-8 col-sm-12">
 
+					<input type="text" th:field="*{id}" class="form-control d-none"
+						   th:errorclass="'form-control alert-danger'" />
+
 					<div class="form-group row mb-0">
 						<a class="btn btn-sm mb-4 btn-link" th:href="@{'/list'}">
 							<i class="fas fa-arrow-left"></i>
@@ -64,7 +67,7 @@
 						<label class="col-sm-3 col-form-label"
 							th:text="#{text.cliente.createdAt}">Fecha</label>
 						<div class="col-sm-9">
-							<input type="date" class="form-control" th:field="*{createdAt}"
+							<input type="date" class="form-control" th:field="*{createdAt}" th:value="*{createdAt}"
 								th:errorclass="'form-control alert-danger'" /> <small
 								class="form-text text-danger"
 								th:if="${#fields.hasErrors('createdAt')}" th:errors="*{createdAt}"></small>

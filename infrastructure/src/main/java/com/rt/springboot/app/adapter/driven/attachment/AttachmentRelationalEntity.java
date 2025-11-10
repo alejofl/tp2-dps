@@ -16,6 +16,6 @@ public class AttachmentRelationalEntity {
     private String filename;
 
     @Lob
-    @Column(name = "bytes", columnDefinition = "BLOB")
+    @Column(name = "bytes", columnDefinition = "MEDIUMBLOB")
     private byte[] bytes;
 }

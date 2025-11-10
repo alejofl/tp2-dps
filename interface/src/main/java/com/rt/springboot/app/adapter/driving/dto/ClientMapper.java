@@ -20,5 +20,6 @@ public interface ClientMapper {
     })
     ClientDto toDto(Client client);
 
+    @Mapping(source = "uuid", target = "id")
     CreateClientDto toCreateDto(Client client);
 }

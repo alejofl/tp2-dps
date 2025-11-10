@@ -6,6 +6,7 @@ import com.rt.springboot.app.port.driven.client.CreateClientPort;
 import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @DrivenAdapter
 @RequiredArgsConstructor
@@ -14,8 +15,9 @@ public class CreateClientRelationalAdapter implements CreateClientPort {
     private final ClientRepository clientRepository;
 
     @Override
-    public Client create(String firstName, String lastName, String email, LocalDate createDate, String photo) {
+    public Client create(UUID uuid, String firstName, String lastName, String email, LocalDate createDate, String photo) {
         final var client  = new ClientRelationalEntity();
+        client.setUuid(uuid);
         client.setFirstName(firstName);
         client.setLastName(lastName);
         client.setEmail(email);

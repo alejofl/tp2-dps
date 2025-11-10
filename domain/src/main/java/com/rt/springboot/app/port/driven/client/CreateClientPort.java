@@ -7,5 +7,5 @@ import java.util.UUID;
 
 public interface CreateClientPort {
 
-    Client create(String firstName, String lastName, String email, LocalDate createDate, String photo);
+    Client create(UUID uuid, String firstName, String lastName, String email, LocalDate createDate, String photo);
 }
