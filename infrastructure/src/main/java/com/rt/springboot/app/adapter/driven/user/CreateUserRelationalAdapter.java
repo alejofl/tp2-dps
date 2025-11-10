@@ -3,6 +3,7 @@ package com.rt.springboot.app.adapter.driven.user;
 import com.rt.springboot.app.annotation.DrivenAdapter;
 import com.rt.springboot.app.model.User;
 import com.rt.springboot.app.port.driven.user.CreateUserPort;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public class CreateUserRelationalAdapter implements CreateUserPort {
     private final RoleRepository roleRepository;
 
     @Override
+    @Transactional
     public User create(String username, String password) {
         final var authority = new RoleRelationalEntity();
         authority.setAuthority("ROLE_USER");

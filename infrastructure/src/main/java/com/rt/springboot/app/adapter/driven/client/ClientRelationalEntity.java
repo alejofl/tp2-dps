@@ -1,9 +1,11 @@
 package com.rt.springboot.app.adapter.driven.client;
 
+import com.rt.springboot.app.adapter.driven.invoice.InvoiceRelationalEntity;
 import lombok.Data;
 
 import jakarta.persistence.*;
 import java.sql.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -32,4 +34,7 @@ public class ClientRelationalEntity {
 
     @Column
     private Date createdAt;
+
+    @OneToMany(mappedBy = "client", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<InvoiceRelationalEntity> invoices;
 }

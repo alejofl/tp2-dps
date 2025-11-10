@@ -5,6 +5,7 @@ import com.rt.springboot.app.annotation.DrivenAdapter;
 import com.rt.springboot.app.model.Client;
 import com.rt.springboot.app.model.Invoice;
 import com.rt.springboot.app.port.driven.invoice.CreateInvoicePort;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 import java.sql.Date;
@@ -18,6 +19,7 @@ public class CreateInvoiceRelationalAdapter implements CreateInvoicePort {
     private final InvoiceRepository invoiceRepository;
 
     @Override
+    @Transactional
     public Invoice create(UUID uuid, String description, String observation, LocalDate createdAt, Client client) {
         final var clientEntity = clientRepository.findByUuid(client.getUuid());
         final var invoiceEntity = new InvoiceRelationalEntity();
