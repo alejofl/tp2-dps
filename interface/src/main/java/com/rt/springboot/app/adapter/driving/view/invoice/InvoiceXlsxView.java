@@ -19,8 +19,12 @@ import org.springframework.web.servlet.view.document.AbstractXlsxView;
 public class InvoiceXlsxView extends AbstractXlsxView {
 
 	@Override
-	protected void buildExcelDocument(Map<String, Object> model, Workbook workbook, HttpServletRequest request,
-			HttpServletResponse response){
+	protected void buildExcelDocument(
+			Map<String, Object> model,
+			Workbook workbook,
+			HttpServletRequest request,
+			HttpServletResponse response
+	) {
 
 		response.setHeader("Content-Disposition", "attachment; filename=\"invoice_view.xlsx\"");
 

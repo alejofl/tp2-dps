@@ -3,7 +3,6 @@ package com.rt.springboot.app.adapter.driving.dto;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-import java.time.LocalDate;
 import java.util.UUID;
 
 @Data

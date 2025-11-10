@@ -4,11 +4,9 @@ import com.rt.springboot.app.model.Invoice;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
-import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
 
 import java.math.BigDecimal;
-import java.util.UUID;
 
 @Mapper(uses = {ClientMapper.class, InvoiceItemMapper.class, CommonFieldsMapper.class})
 public interface InvoiceMapper {
