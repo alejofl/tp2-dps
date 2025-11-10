@@ -1,15 +1,13 @@
 package com.rt.springboot.app.adapter.driving;
 
 import com.rt.springboot.app.Pair;
-import com.rt.springboot.app.adapter.driving.dto.ClientMapper;
-import com.rt.springboot.app.adapter.driving.dto.CreateInvoiceDto;
-import com.rt.springboot.app.adapter.driving.dto.InvoiceDto;
-import com.rt.springboot.app.adapter.driving.dto.InvoiceMapper;
+import com.rt.springboot.app.adapter.driving.dto.*;
 import com.rt.springboot.app.annotation.DrivingAdapter;
 import com.rt.springboot.app.port.driving.client.FindClientUseCase;
 import com.rt.springboot.app.port.driving.invoice.CreateInvoiceUseCase;
 import com.rt.springboot.app.port.driving.invoice.DeleteInvoiceUseCase;
 import com.rt.springboot.app.port.driving.invoice.FindInvoiceUseCase;
+import com.rt.springboot.app.port.driving.product.FindProductsByNameUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
 import org.springframework.security.access.annotation.Secured;
@@ -33,6 +31,7 @@ public class InvoiceMvcAdapter {
     private final FindInvoiceUseCase findInvoiceUseCase;
     private final FindClientUseCase findClientUseCase;
     private final CreateInvoiceUseCase createInvoiceUseCase;
+    private final FindProductsByNameUseCase findProductsByNameUseCase;
 
     private final MessageSource messageSource;
 
@@ -53,6 +52,15 @@ public class InvoiceMvcAdapter {
         model.addAttribute("title", String.format(messageSource.getMessage("text.factura.ver.titulo", null, locale), invoice.getDescription()));
 
         return "invoice/view";
+    }
+
+    @GetMapping(value = "/load-products/{term}", produces = { "application/json" })
+    @ResponseBody
+    public List<ProductDto> loadProducts(@PathVariable String term) {
+        return this.findProductsByNameUseCase.findByName(term)
+                .stream()
+                .map(ProductMapper.INSTANCE::toDto)
+                .toList();
     }
 
     @GetMapping("/form/{clientId}")
