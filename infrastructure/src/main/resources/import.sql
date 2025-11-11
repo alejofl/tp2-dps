@@ -1,55 +1,55 @@
 /* Populate tables */
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (1, UNHEX(REPLACE('9cc379a6-41db-4dc2-af82-36eb989ad27e', '-', '')), 'Jose', 'Pepe', 'josepepe@gmail.com', '2019-10-09', '');
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (2, UNHEX(REPLACE('d1ba074f-52ae-428b-9573-ee8aa5caa8c8', '-', '')), 'Maria', 'Pepa', 'mariapepa@gmail.com', '2019-09-25', '');
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (3, UNHEX(REPLACE('aaef75ce-511c-4a81-8774-fb81360943c9', '-', '')),'Biron','Chastaing','bchastaing0@ocn.ne.jp','2018-12-24', '');
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (4, UNHEX(REPLACE('e1034f44-3a07-40c6-a886-761c2f152844', '-', '')),'Doug','Quig','dquig1@webnode.com','2019-05-21', '');
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (5, UNHEX(REPLACE('a8a1e3f9-7358-4ada-a730-90f659781bac', '-', '')),'Francyne','Terbrug','fterbrug2@angelfire.com','2019-10-10', '');
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (6, UNHEX(REPLACE('45befb58-f787-4616-8699-9cc5dc159195', '-', '')),'Egan','Newlands','enewlands3@ftc.gov','2019-08-29', '');
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (7, UNHEX(REPLACE('af985e9d-03a1-4b68-b6b2-159490dbe05e', '-', '')),'Willi','Squibe','wsquibe4@nsw.gov.au','2019-04-12', '');
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (8, UNHEX(REPLACE('fa0e2526-63c7-44d4-8036-5f00583095e8', '-', '')),'Anatola','Roddam','aroddam5@home.pl','2019-03-07', '');
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (9, UNHEX(REPLACE('9af0fbc9-e33c-4ca7-88ea-774ee37cef78', '-', '')),'Ramonda','Haylett','rhaylett6@unc.edu','2019-01-19', '');
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (10, UNHEX(REPLACE('dd46f85a-7041-4ea5-bb04-51bd521cb71c', '-', '')),'Timothy','McMurty','tmcmurty7@opensource.org','2019-01-11', '');
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (11, UNHEX(REPLACE('4422ff5b-1a90-4d01-af5c-f390f4a3b4d8', '-', '')),'Micky','Gammie','mgammie8@mapy.cz','2018-12-18', '');
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (12, UNHEX(REPLACE('c0acfc9b-b1f8-4fa0-9d81-c8a0202446ae', '-', '')),'Dun','Gregersen','dgregersenb@tuttocitta.it','2019-06-05', '');
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (13, UNHEX(REPLACE('786a2de4-4dbb-4c43-b906-bdd9f8162c2d', '-', '')),'Forester','Jerwood','fjerwoodc@mayoclinic.com','2019-07-03', '');
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (14, UNHEX(REPLACE('b4a8cce5-d104-4a06-9605-233302349771', '-', '')),'Gertruda','Vernalls','gvernallsd@psu.edu','2018-12-25', '');
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (15, UNHEX(REPLACE('7dfa46b7-2eb3-4e79-a249-c2e44290fac7', '-', '')),'Lita','Jansen','ljansene@yellowbook.com','2019-04-30', '');
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (16, UNHEX(REPLACE('f5750d42-171e-4ac9-b8d3-b3f1d17fac09', '-', '')),'Saw','Erley','serleyf@photobucket.com','2019-06-02', '');
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (17, UNHEX(REPLACE('198ffa83-0698-40a8-b6e8-44b2b1059461', '-', '')),'Dagny','Copelli','dcopellig@goodreads.com','2019-04-17', '');
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (18, UNHEX(REPLACE('7bd1181c-afec-4885-a315-edf9f32eeb13', '-', '')),'Izak','Gerssam','igerssamh@163.com','2018-10-28', '');
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (19, UNHEX(REPLACE('e55872f7-3f5a-4198-96d3-8960797e37ce', '-', '')),'Gawen','Stot','gstoti@jimdo.com','2019-01-07', '');
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (20, UNHEX(REPLACE('d890b23c-155b-46c6-8db4-6c8e8e8e3a40', '-', '')),'Jessee','Strowlger','jstrowlgerj@redcross.org','2019-01-05', '');
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (21, UNHEX(REPLACE('957a42d3-f374-4fb0-8031-76abd9b30c2b', '-', '')),'Bay','Pashler','bpashlerk@istockphoto.com','2019-01-29', '');
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (22, UNHEX(REPLACE('a13f8ce0-e234-43cf-8c03-e68240b54f7f', '-', '')),'Verine','Keightley','vkeightleyl@tripadvisor.com','2019-06-24', '');
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (23, UNHEX(REPLACE('955c1b68-306a-4428-b93b-9aff576cb310', '-', '')),'Gratia','Loble','globlem@joomla.org','2019-07-25', '');
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (24, UNHEX(REPLACE('0e3ecb74-b313-4e23-b283-275db571128e', '-', '')),'Drake','Kingston','dkingstonn@altervista.org','2019-02-21', '');
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (25, UNHEX(REPLACE('a28d6f92-5fe9-4854-8b6b-9dfef5716713', '-', '')),'Grayce','Cruddas','gcruddaso@marriott.com','2019-05-06', '');
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (26, UNHEX(REPLACE('02a3cd37-8a0e-4dab-afe9-c338f6e0d38e', '-', '')),'Karry','Botten','kbottenp@sitemeter.com','2019-02-02', '');
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (27, UNHEX(REPLACE('a5b81732-19b4-4df3-a6e6-a640733849bd', '-', '')),'Mead','Jellings','mjellingsq@accuweather.com','2019-07-08', '');
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (28, UNHEX(REPLACE('5139dd6f-fafa-4a61-a753-d5e0094d2ee4', '-', '')),'Elden','Wiltsher','ewiltsherr@theglobeandmail.com','2019-03-25', '');
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (29, UNHEX(REPLACE('8c714b4e-0dbe-478d-8b55-0905cbf0df3b', '-', '')),'Caprice','Strase','cstrases@goo.gl','2019-04-28', '');
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (30, UNHEX(REPLACE('10eef347-0564-4033-84f6-22724668cf44', '-', '')),'Dolly','Ringrose','dringroset@drupal.org','2019-01-22', '');
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (31, UNHEX(REPLACE('639bace0-70f1-46ed-a364-238b71a03e96', '-', '')),'Stanley','Hovert','shovert9@rediff.com','2019-05-04', '');
-INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (32, UNHEX(REPLACE('d82e1aaf-bbff-4477-a0c2-392dd8ca91fd', '-', '')),'Janelle','Quilleash','jquilleasha@slashdot.org','2019-06-12', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (1, X'9cc379a641db4dc2af8236eb989ad27e', 'Jose', 'Pepe', 'josepepe@gmail.com', '2019-10-09', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (2, X'd1ba074f52ae428b9573ee8aa5caa8c8', 'Maria', 'Pepa', 'mariapepa@gmail.com', '2019-09-25', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (3, X'aaef75ce511c4a818774fb81360943c9','Biron','Chastaing','bchastaing0@ocn.ne.jp','2018-12-24', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (4, X'e1034f443a0740c6a886761c2f152844','Doug','Quig','dquig1@webnode.com','2019-05-21', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (5, X'a8a1e3f973584adaa73090f659781bac','Francyne','Terbrug','fterbrug2@angelfire.com','2019-10-10', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (6, X'45befb58f787461686999cc5dc159195','Egan','Newlands','enewlands3@ftc.gov','2019-08-29', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (7, X'af985e9d03a14b68b6b2159490dbe05e','Willi','Squibe','wsquibe4@nsw.gov.au','2019-04-12', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (8, X'fa0e252663c744d480365f00583095e8','Anatola','Roddam','aroddam5@home.pl','2019-03-07', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (9, X'9af0fbc9e33c4ca788ea774ee37cef78','Ramonda','Haylett','rhaylett6@unc.edu','2019-01-19', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (10, X'dd46f85a70414ea5bb0451bd521cb71c','Timothy','McMurty','tmcmurty7@opensource.org','2019-01-11', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (11, X'4422ff5b1a904d01af5cf390f4a3b4d8','Micky','Gammie','mgammie8@mapy.cz','2018-12-18', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (12, X'c0acfc9bb1f84fa09d81c8a0202446ae','Dun','Gregersen','dgregersenb@tuttocitta.it','2019-06-05', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (13, X'786a2de44dbb4c43b906bdd9f8162c2d','Forester','Jerwood','fjerwoodc@mayoclinic.com','2019-07-03', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (14, X'b4a8cce5d1044a069605233302349771','Gertruda','Vernalls','gvernallsd@psu.edu','2018-12-25', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (15, X'7dfa46b72eb34e79a249c2e44290fac7','Lita','Jansen','ljansene@yellowbook.com','2019-04-30', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (16, X'f5750d42171e4ac9b8d3b3f1d17fac09','Saw','Erley','serleyf@photobucket.com','2019-06-02', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (17, X'198ffa83069840a8b6e844b2b1059461','Dagny','Copelli','dcopellig@goodreads.com','2019-04-17', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (18, X'7bd1181cafec4885a315edf9f32eeb13','Izak','Gerssam','igerssamh@163.com','2018-10-28', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (19, X'e55872f73f5a419896d38960797e37ce','Gawen','Stot','gstoti@jimdo.com','2019-01-07', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (20, X'd890b23c155b46c68db46c8e8e8e3a40','Jessee','Strowlger','jstrowlgerj@redcross.org','2019-01-05', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (21, X'957a42d3f3744fb0803176abd9b30c2b','Bay','Pashler','bpashlerk@istockphoto.com','2019-01-29', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (22, X'a13f8ce0e23443cf8c03e68240b54f7f','Verine','Keightley','vkeightleyl@tripadvisor.com','2019-06-24', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (23, X'955c1b68306a4428b93b9aff576cb310','Gratia','Loble','globlem@joomla.org','2019-07-25', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (24, X'0e3ecb74b3134e23b283275db571128e','Drake','Kingston','dkingstonn@altervista.org','2019-02-21', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (25, X'a28d6f925fe948548b6b9dfef5716713','Grayce','Cruddas','gcruddaso@marriott.com','2019-05-06', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (26, X'02a3cd378a0e4dabafe9c338f6e0d38e','Karry','Botten','kbottenp@sitemeter.com','2019-02-02', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (27, X'a5b8173219b44df3a6e6a640733849bd','Mead','Jellings','mjellingsq@accuweather.com','2019-07-08', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (28, X'5139dd6ffafa4a61a753d5e0094d2ee4','Elden','Wiltsher','ewiltsherr@theglobeandmail.com','2019-03-25', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (29, X'8c714b4e0dbe478d8b550905cbf0df3b','Caprice','Strase','cstrases@goo.gl','2019-04-28', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (30, X'10eef3470564403384f622724668cf44','Dolly','Ringrose','dringroset@drupal.org','2019-01-22', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (31, X'639bace070f146eda364238b71a03e96','Stanley','Hovert','shovert9@rediff.com','2019-05-04', '');
+INSERT INTO clients (id, uuid, first_name, last_name, email, created_at, photo) VALUES (32, X'd82e1aafbbff4477a0c2392dd8ca91fd','Janelle','Quilleash','jquilleasha@slashdot.org','2019-06-12', '');
 
 /* Populate table products */
-INSERT INTO products (id, uuid, name, price, created_at) VALUES(1, UNHEX(REPLACE('96c79f1d-48b4-4131-a579-5584fb0c29a4', '-', '')), 'Panasonic LCD', 259990, NOW());
-INSERT INTO products (id, uuid, name, price, created_at) VALUES(2, UNHEX(REPLACE('eb773a77-ed8e-40f7-b884-f56a19a182d2', '-', '')), 'Sony Camera DSC-W320B', 1234590, NOW());
-INSERT INTO products (id, uuid, name, price, created_at) VALUES(3, UNHEX(REPLACE('bc10f925-d7e5-4eaf-9a34-0fee37a13685', '-', '')), 'Apple iPod', 1499990, NOW());
-INSERT INTO products (id, uuid, name, price, created_at) VALUES(4, UNHEX(REPLACE('3bf7544d-1774-466a-9454-de78a2559c42', '-', '')), 'Sony Notebook Z110', 37990, NOW());
-INSERT INTO products (id, uuid, name, price, created_at) VALUES(5, UNHEX(REPLACE('559fe274-1009-41dd-8f89-4f6e018499bb', '-', '')), 'HP F2280 MultiF', 69990, NOW());
-INSERT INTO products (id, uuid, name, price, created_at) VALUES(6, UNHEX(REPLACE('9bf35d36-aaae-415a-862b-3aee762bed7c', '-', '')), 'Bike 26 BMW', 69990, NOW());
-INSERT INTO products (id, uuid, name, price, created_at) VALUES(7, UNHEX(REPLACE('b0d5e793-a8d6-4d9c-910f-03858e085363', '-', '')), 'Keyboard Razer CLGv', 299990, NOW());
-INSERT INTO products (id, uuid, name, price, created_at) VALUES(8, UNHEX(REPLACE('f62857cf-1fae-4718-90eb-b65da871aef3', '-', '')), 'Mouse Razer Deathadder', 299650, NOW());
+INSERT INTO products (id, uuid, name, price, created_at) VALUES(1, X'96c79f1d48b44131a5795584fb0c29a4', 'Panasonic LCD', 259990, NOW());
+INSERT INTO products (id, uuid, name, price, created_at) VALUES(2, X'eb773a77ed8e40f7b884f56a19a182d2', 'Sony Camera DSC-W320B', 1234590, NOW());
+INSERT INTO products (id, uuid, name, price, created_at) VALUES(3, X'bc10f925d7e54eaf9a340fee37a13685', 'Apple iPod', 1499990, NOW());
+INSERT INTO products (id, uuid, name, price, created_at) VALUES(4, X'3bf7544d1774466a9454de78a2559c42', 'Sony Notebook Z110', 37990, NOW());
+INSERT INTO products (id, uuid, name, price, created_at) VALUES(5, X'559fe274100941dd8f894f6e018499bb', 'HP F2280 MultiF', 69990, NOW());
+INSERT INTO products (id, uuid, name, price, created_at) VALUES(6, X'9bf35d36aaae415a862b3aee762bed7c', 'Bike 26 BMW', 69990, NOW());
+INSERT INTO products (id, uuid, name, price, created_at) VALUES(7, X'b0d5e793a8d64d9c910f03858e085363', 'Keyboard Razer CLGv', 299990, NOW());
+INSERT INTO products (id, uuid, name, price, created_at) VALUES(8, X'f62857cf1fae471890ebb65da871aef3', 'Mouse Razer Deathadder', 299650, NOW());
 
 /* Invoices */
-INSERT INTO invoices(id, uuid, description, observation, client_id, created_at) VALUES(1, UNHEX(REPLACE('4ccf9085-327f-4391-9ae1-40629693d8f2', '-', '')), 'Invoice office team', null, 1, NOW());
+INSERT INTO invoices(id, uuid, description, observation, client_id, created_at) VALUES(1, X'4ccf9085327f43919ae140629693d8f2', 'Invoice office team', null, 1, NOW());
 INSERT INTO invoice_items(amount, invoice_id, product_id) VALUES(1, 1, 1);
 INSERT INTO invoice_items(amount, invoice_id, product_id) VALUES(2, 1, 4);
 INSERT INTO invoice_items(amount, invoice_id, product_id) VALUES(1, 1, 5);
 INSERT INTO invoice_items(amount, invoice_id, product_id) VALUES(1, 1, 7);
 
-INSERT INTO invoices(id, uuid, description, observation, client_id, created_at) VALUES(2, UNHEX(REPLACE('175525be-6b4c-4a32-9878-d142d972586c', '-', '')),'Bike Invoice', 'IMPORTANT STUFF', 1, NOW());
+INSERT INTO invoices(id, uuid, description, observation, client_id, created_at) VALUES(2, X'175525be6b4c4a329878d142d972586c','Bike Invoice', 'IMPORTANT STUFF', 1, NOW());
 INSERT INTO invoice_items(amount, invoice_id, product_id) VALUES(3, 2, 6);
 
 /* Users */

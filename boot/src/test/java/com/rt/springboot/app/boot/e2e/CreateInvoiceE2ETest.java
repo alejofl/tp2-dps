@@ -12,7 +12,7 @@ import java.time.Duration;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ActiveProfiles("test")
-public class CreateInvoiceTest extends E2ETestBase {
+public class CreateInvoiceE2ETest extends E2ETestBase {
 
     @Test
     public void shouldCreateInvoiceForExistingClient() throws InterruptedException {

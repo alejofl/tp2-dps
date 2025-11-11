@@ -8,7 +8,7 @@ import org.springframework.test.context.ActiveProfiles;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ActiveProfiles("test")
-public class LoginTest extends E2ETestBase {
+public class LoginE2ETest extends E2ETestBase {
     @Test
     public void shouldLoginWithValidCredentials() throws InterruptedException {
         driver.get(baseUrl() + "/login");

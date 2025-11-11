@@ -61,10 +61,13 @@ class FindAllClientsUseCaseIntegrationTest {
     }
 
     @Test
-    @DisplayName("Should return empty list when no clients exist")
+    @DisplayName("Should not add clients when accessing client list")
     @WithMockUser(roles = "USER")
-    void shouldReturnEmptyListWhenNoClientsExist() throws Exception {
-        // When, Then
+    void shouldNotAddClientsWhenAccessingClientList() throws Exception {
+        // When
+        final var clientCountBeforeCall = findAllClientsUseCase.findAll().size();
+
+        // Then
         mockMvc.perform(get("/list"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("list"))
@@ -73,7 +76,7 @@ class FindAllClientsUseCaseIntegrationTest {
         // Verify
         List<Client> allClients = findAllClientsUseCase.findAll();
         assertThat(allClients).isNotNull();
-        assertThat(allClients).isEmpty();
+        assertThat(allClients.size()).isEqualTo(clientCountBeforeCall);
     }
 
     @Test

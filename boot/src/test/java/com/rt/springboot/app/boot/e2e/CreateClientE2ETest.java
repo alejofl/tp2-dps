@@ -13,7 +13,7 @@ import java.time.Duration;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ActiveProfiles("test")
-public class CreateClientTest extends E2ETestBase {
+public class CreateClientE2ETest extends E2ETestBase {
 
     @Test
     public void shouldCreateClient() throws InterruptedException {
