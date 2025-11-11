@@ -1,18 +1,26 @@
-import com.rt.springboot.app.adapter.driven.attachment.*;
+package com.rt.springboot.app.adapter.driven.attachment;
+
 import com.rt.springboot.app.model.Attachment;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
+@ExtendWith(MockitoExtension.class)
 class FindAttachmentRelationalAdapterTest {
+
+    @Mock
+    private AttachmentRepository repository;
+
+    @InjectMocks
+    private FindAttachmentRelationalAdapter adapter;
 
     @Test
     void findByFilename() {
-        AttachmentRepository repository = mock(AttachmentRepository.class);
-
-        FindAttachmentRelationalAdapter adapter = new FindAttachmentRelationalAdapter(repository);
-
         AttachmentRelationalEntity entity = new AttachmentRelationalEntity();
         entity.setId(1L);
         entity.setFilename("filename");

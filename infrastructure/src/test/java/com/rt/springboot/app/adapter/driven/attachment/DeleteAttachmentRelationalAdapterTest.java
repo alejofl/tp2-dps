@@ -1,5 +1,5 @@
-import com.rt.springboot.app.adapter.driven.attachment.AttachmentRepository;
-import com.rt.springboot.app.adapter.driven.attachment.DeleteAttachmentRelationalAdapter;
+package com.rt.springboot.app.adapter.driven.attachment;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

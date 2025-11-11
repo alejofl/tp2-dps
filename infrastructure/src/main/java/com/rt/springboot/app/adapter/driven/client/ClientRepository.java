@@ -9,4 +9,6 @@ public interface ClientRepository extends JpaRepository<ClientRelationalEntity, 
     ClientRelationalEntity findByUuid(UUID uuid);
 
     void deleteByUuid(UUID uuid);
+
+    UUID id(Long id);
 }
