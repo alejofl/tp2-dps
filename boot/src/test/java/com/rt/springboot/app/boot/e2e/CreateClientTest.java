@@ -1,4 +1,4 @@
-package com.rt.springboot.app.e2e;
+package com.rt.springboot.app.boot.e2e;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
