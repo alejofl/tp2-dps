@@ -26,7 +26,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
-@AutoConfigureMockMvcx
+@AutoConfigureMockMvc
 @ActiveProfiles("test")
 @Transactional
 class FindProductUseCaseIntegrationTest {
